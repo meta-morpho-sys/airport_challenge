@@ -1,8 +1,13 @@
 # responsible for the weather conditions
 class Weather
 
+  def initialize(stormy = nil)
+    @stormy = stormy
+  end
+
   def stormy?
-    random_forecast == :stormy
+    return (random_forecast == :stormy) if @stormy.nil?
+    @stormy
   end
 
   private
