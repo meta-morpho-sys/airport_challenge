@@ -2,8 +2,8 @@
 class Plane
   attr_reader :landed
 
-  def initialize
-    @landed = false
+  def initialize(flying = true)
+    @landed = !flying
   end
 
   def flying?
@@ -20,6 +20,7 @@ class Plane
   end
 
   def take_off
+    raise 'Already flying!!' if flying?
     @landed = false
     self
   end
