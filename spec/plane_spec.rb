@@ -11,6 +11,10 @@ describe Plane do
     plane = subject.land
     expect(plane).to be_landed
   end
+  it 'does not land twice' do
+    subject.land
+    expect { subject.land }.to raise_exception 'Already landed!!'
+  end
   it 'is #landed' do
     expect(subject.landed?).to eq false
   end
@@ -18,7 +22,7 @@ describe Plane do
     subject.land
     expect(subject.take_off).to be_flying
   end
-  it "doesn't take off twice" do
+  it 'does not take off twice' do
     expect { subject.take_off }.to raise_exception 'Already flying!!'
   end
 end

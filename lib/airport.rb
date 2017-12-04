@@ -5,6 +5,9 @@ require_relative 'weather'
 # decide whether a plane should land or take off.
 class Airport
   DEFAULT_CAPACITY = 100
+  LAND_STORMY_WEATHER_MSG = 'Landing denied due to stormy weather'
+  TAKE_OFF_STORMY_WEATHER_MSG = 'Take-off denied due to stormy weather'
+  NO_SPACE_MSG = 'No available space.'
   attr_reader :planes, :capacity
 
   def initialize(capacity = DEFAULT_CAPACITY)
@@ -13,13 +16,13 @@ class Airport
   end
 
   def land(plane, weather)
-    raise 'Landing denied due to stormy weather' if weather.stormy?
-    raise 'No available space.' if full?
+    raise LAND_STORMY_WEATHER_MSG if weather.stormy?
+    raise NO_SPACE_MSG if full?
     @planes << plane.land
   end
 
   def take_off(plane, weather)
-    raise 'Take-off denied due to stormy weather' if weather.stormy?
+    raise TAKE_OFF_STORMY_WEATHER_MSG if weather.stormy?
     plane.take_off
     @planes.pop
   end

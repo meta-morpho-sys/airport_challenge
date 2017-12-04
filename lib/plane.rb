@@ -15,6 +15,7 @@ class Plane
   end
 
   def land
+    raise 'Already landed!!' if landed?
     @landed = true
     self
   end

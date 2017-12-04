@@ -36,27 +36,25 @@ describe Airport do
       described_class::DEFAULT_CAPACITY.times do
         subject.land(flying_plane, sunny_weather)
       end
-      message = 'No available space.'
       expect { subject.land(flying_plane, sunny_weather) }
-          .to raise_error message
+          .to raise_error described_class::NO_SPACE_MSG
     end
     it 'does not allow a plane to land if the weather is stormy' do
-      message = 'Landing denied due to stormy weather'
       expect { subject.land(flying_plane, stormy_weather) }
-          .to raise_error message
+          .to raise_error described_class::LAND_STORMY_WEATHER_MSG
     end
   end
 
   context 'in take-off procedure' do
     it 'gives the plane instructions to take off' do
       subject.land(flying_plane, sunny_weather)
-      expect(subject.take_off(parked_plane, sunny_weather)).to be_flying
+      expect(subject.take_off(parked_plane, sunny_weather))
+          .to be_flying
     end
     it 'does not allow a plane to take off if the weather is stormy' do
-      message = 'Take-off denied due to stormy weather'
       subject.land(flying_plane, sunny_weather)
       expect { subject.take_off(parked_plane, stormy_weather) }
-          .to raise_error message
+          .to raise_error described_class::TAKE_OFF_STORMY_WEATHER_MSG
     end
     it 'knows when the plane has taken off' do
       2.times { subject.land(flying_plane, sunny_weather) }
