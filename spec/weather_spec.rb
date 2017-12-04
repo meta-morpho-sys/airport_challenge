@@ -10,7 +10,7 @@ describe Weather do
     NUM_REPS = 100_000
     count = 0
     NUM_REPS.times { count += (subject.stormy? ? 0 : 1) }
-    p percentage_sunny = 100.0 * count / NUM_REPS
+    percentage_sunny = 100.0 * count / NUM_REPS
     # expect( count > NUM_REPS * 0.5 ).to be true
     expect(percentage_sunny).to be_between(60, 70)
   end
