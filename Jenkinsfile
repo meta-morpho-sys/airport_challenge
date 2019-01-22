@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Fluffy Test') {
       steps {
-        echo 'Fluffy Test'
+        echo 'Placeholder'
       }
     }
     stage('Fluffy Deploy"') {
