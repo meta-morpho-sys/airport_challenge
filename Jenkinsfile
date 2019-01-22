@@ -11,5 +11,10 @@ pipeline {
         echo 'Fluffy Test'
       }
     }
+    stage('Fluffy Deploy"') {
+      steps {
+        echo 'Placeholder'
+      }
+    }
   }
 }
