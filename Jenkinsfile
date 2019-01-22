@@ -6,5 +6,10 @@ pipeline {
         echo 'Placeholder'
       }
     }
+    stage('Fluffy Test') {
+      steps {
+        echo 'Fluffy Test'
+      }
+    }
   }
 }
